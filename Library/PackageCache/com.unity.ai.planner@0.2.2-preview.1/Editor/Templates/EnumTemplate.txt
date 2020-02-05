@@ -1,0 +1,10 @@
+
+namespace {{ namespace }}.Enums
+{
+    public enum {{ name }}
+    {
+    {{- for value in values }}
+        {{ value }},
+    {{- end }}
+    }
+}

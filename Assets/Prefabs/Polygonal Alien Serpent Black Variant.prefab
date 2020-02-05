@@ -1,0 +1,304 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!54 &899716433
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766852691127902169}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &899716434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766852691127902169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bf20b7467af7cb43b49d1e8b5419e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!195 &899716435
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766852691127902169}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &899716436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766852691127902169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8ac131c09d04008af565adfda708ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LocalObjectData: []
+  m_PlanDefinition: {fileID: 11400000, guid: 594371f14d17d4649b226e5194bc6318, type: 2}
+  m_InitializeOnStart: 1
+  m_AutoUpdate: 1
+  m_SearchSettings:
+    SearchIterationsPerUpdate: 1
+    StateExpansionBudgetPerIteration: 1
+    UseCustomSearchFrequency: 1
+    FramesPerSearchUpdate: 0
+    CapPlanSize: 0
+    MaxStatesInPlan: 0
+    StopPlanningWhenToleranceAchieved: 0
+    RootPolicyValueTolerance: 0
+    GraphSelectionJobMode: 0
+    GraphBackpropagationJobMode: 0
+  m_ExecutionSettings:
+    ExecutionMode: 0
+    MaximumDecisionTolerance: 0
+    MinimumPlanSize: 0
+    MinimumSearchTime: 0
+  m_WorldObjectQuery:
+    m_Filters: []
+  m_ActionExecuteInfos:
+  - m_ActionName: MyNavigation
+    m_OnActionComplete: 1
+    m_Method: agentMoveTo
+    m_SourceGameObject: {fileID: 5766852691127902169}
+    m_Source: {fileID: 899716438}
+    m_Arguments:
+    - m_Parameter: To
+      m_Trait: {fileID: 0}
+      m_TraitFieldId: 0
+      m_Enum: {fileID: 0}
+      m_Value: 
+  - m_ActionName: LookAt
+    m_OnActionComplete: 1
+    m_Method: lookAt
+    m_SourceGameObject: {fileID: 5766852691127902169}
+    m_Source: {fileID: 899716438}
+    m_Arguments:
+    - m_Parameter: Target
+      m_Trait: {fileID: 0}
+      m_TraitFieldId: 0
+      m_Enum: {fileID: 0}
+      m_Value: 
+  - m_ActionName: ChaseTarget
+    m_OnActionComplete: 1
+    m_Method: agentChase
+    m_SourceGameObject: {fileID: 5766852691127902169}
+    m_Source: {fileID: 899716438}
+    m_Arguments:
+    - m_Parameter: Towards
+      m_Trait: {fileID: 0}
+      m_TraitFieldId: 0
+      m_Enum: {fileID: 0}
+      m_Value: 
+  m_DisplayAdvancedSettings: 0
+--- !u!114 &899716438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766852691127902169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbcb2576a4532d45aa506259d6fee4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 512
+  viewDistance: 30
+--- !u!114 &899716439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5766852691127902169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4163c4525e1464b2d87e13978b85c02d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ObjectData:
+    m_Name: Polygonal Alien Serpent Black
+    m_TraitData:
+    - m_TraitDefinition: {fileID: 11400000, guid: bf25d276e686a5c4a8bbdc88fc60eba9,
+        type: 2}
+      m_FieldValues: []
+    - m_TraitDefinition: {fileID: 11400000, guid: 9d24b90158d644873a4d488182380074,
+        type: 2}
+      m_FieldValues:
+      - m_Name: Transform
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 5769178878153235549}
+      - m_Name: Position
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 0}
+      - m_Name: Forward
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 0}
+    - m_TraitDefinition: {fileID: 11400000, guid: 8550f669806ac2e4c980d8841bfc650d,
+        type: 2}
+      m_FieldValues:
+      - m_Name: Transform
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 5769178878153235549}
+      - m_Name: PlayerSeen
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 0}
+      - m_Name: ObjectSeen
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 0}
+    - m_TraitDefinition: {fileID: 11400000, guid: d59d07249ce0f0943929b1d4b761af33,
+        type: 2}
+      m_FieldValues:
+      - m_Name: Transform
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 5769178878153235549}
+      - m_Name: PlayerSeen
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 0}
+      - m_Name: ObjectSeen
+        m_BoolValue: 0
+        m_FloatValue: 0
+        m_IntValue: 0
+        m_StringValue: 
+        m_ObjectValue: {fileID: 0}
+--- !u!1001 &5764919115887952189
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1937973867405028, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_Name
+      value: Polygonal Alien Serpent Black
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 87.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 74.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 95215628326204866, guid: 0efb2ce0b50ea5b4396fbd54aa307089,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f10352fe7db0e3e4783d3d5ca8e2d7dc, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0efb2ce0b50ea5b4396fbd54aa307089, type: 3}
+--- !u!1 &5766852691127902169 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1937973867405028, guid: 0efb2ce0b50ea5b4396fbd54aa307089,
+    type: 3}
+  m_PrefabInstance: {fileID: 5764919115887952189}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5769178878153235549 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4827937628937568, guid: 0efb2ce0b50ea5b4396fbd54aa307089,
+    type: 3}
+  m_PrefabInstance: {fileID: 5764919115887952189}
+  m_PrefabAsset: {fileID: 0}

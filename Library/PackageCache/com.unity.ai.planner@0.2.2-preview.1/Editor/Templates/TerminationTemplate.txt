@@ -1,0 +1,88 @@
+using Unity.AI.Planner;
+using Unity.Collections;
+using Unity.Entities;
+using Unity.AI.Planner.DomainLanguage.TraitBased;
+{{- if include_enums }}
+using {{ namespace }}.Enums;
+{{- end }}
+
+namespace {{ namespace }}
+{
+    public struct {{name}}
+    {
+        public bool IsTerminal(StateData stateData)
+        {
+            {{- for p in parameter_list }}
+            var {{ p.name }}Filter = new NativeArray<ComponentType>({{p.required_traits.size + p.prohibited_traits.size}}, Allocator.Temp){ {{- for r in p.required_traits -}} [{{ for.index }}] = ComponentType.ReadWrite<{{ r }}>(),{{ end }}
+                                                            {{- for e in p.prohibited_traits }} [{{ for.index + p.required_traits.size }}] = ComponentType.Exclude<{{ e }}>(),{{ end }}  };
+            {{- end }}
+
+            {{- for p in parameter_list }}
+            var {{ p.name }}ObjectIndices = new NativeList<int>(2, Allocator.Temp);
+            stateData.GetTraitBasedObjectIndices({{ p.name }}ObjectIndices, {{ p.name }}Filter);
+            {{- end }}
+
+            {{- for c in criteria_traits }}
+            var {{ c }}Buffer = stateData.{{ c }}Buffer;
+            {{- end }}
+
+            {{- for p in parameter_list }}
+            {{ param_index = for.index }}
+            for (int i{{ param_index }} = 0; i{{ param_index }} < {{ p.name }}ObjectIndices.Length; i{{ param_index }}++)
+            {
+                var {{ p.name }}Index = {{ p.name }}ObjectIndices[i{{ param_index }}];
+                var {{ p.name }}Object = stateData.TraitBasedObjects[{{ p.name }}Index];
+
+                {{- for c in criteria_list }}
+                {{ if param_index == c.loop_index }}
+                if (!({{ c.operand_a }} {{ c.operator }} {{ c.operand_b }}))
+                    continue;
+                {{- end }}
+                {{- end }}
+            {{- end }}
+
+                {{- for p in parameter_list }}
+                {{ p.name }}Filter.Dispose();
+                {{- end }}
+                return true;
+            {{- for p in parameter_list }}
+            }
+            {{- end }}
+
+            {{- for p in parameter_list }}
+            {{ p.name }}ObjectIndices.Dispose();
+            {{- end }}
+            {{- for p in parameter_list }}
+            {{ p.name }}Filter.Dispose();
+            {{- end }}
+
+            return false;
+        }
+
+        public float TerminalReward(StateData stateData)
+        {
+            var reward = {{ reward_value }}f;
+
+            {{- for r in custom_rewards }}
+            {
+                {{- if r.parameters.empty? }}
+                {{- $args = "originalState, action, newState" }}
+                {{- else }}
+                {{- $args = "" }}
+                {{- end }}
+
+                {{- for p in r.parameters }}
+                var param{{for.index}} = originalState.GetTraitOnObjectAtIndex<{{ p.type }}>(action[{{ p.index }}]);
+                {{- $args = $args + "param" + for.index }}
+                {{- if for.index != for.length - 1 }}
+                    {{- $args = $args + ", " }}
+                {{- end }}
+                {{- end }}
+                reward {{ r.operator }} new {{ r.typename }}().RewardModifier( {{ $args }});
+            }
+            {{- end }}
+
+            return reward;
+        }
+    }
+}

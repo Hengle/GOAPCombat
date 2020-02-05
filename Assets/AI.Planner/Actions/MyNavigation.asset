@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e16f0575d73480ebe7b76bb4ae3939, type: 3}
+  m_Name: MyNavigation
+  m_EditorClassIdentifier: 
+  m_Parameters:
+  - m_Name: Agent
+    m_RequiredTraits:
+    - {fileID: 11400000, guid: 9d24b90158d644873a4d488182380074, type: 2}
+    - {fileID: 11400000, guid: bf25d276e686a5c4a8bbdc88fc60eba9, type: 2}
+    m_ProhibitedTraits: []
+  - m_Name: To
+    m_RequiredTraits:
+    - {fileID: 11400000, guid: 9d24b90158d644873a4d488182380074, type: 2}
+    - {fileID: 11400000, guid: c1187bddf46adda478431ba78016c87c, type: 2}
+    m_ProhibitedTraits:
+    - {fileID: 11400000, guid: bf25d276e686a5c4a8bbdc88fc60eba9, type: 2}
+  m_Preconditions:
+  - m_Operator: '!='
+    m_OperandA:
+      m_Parameter: Agent
+      m_Trait: {fileID: 11400000, guid: 9d24b90158d644873a4d488182380074, type: 2}
+      m_TraitFieldId: 101
+      m_Enum: {fileID: 0}
+      m_Value: 
+    m_OperandB:
+      m_Parameter: To
+      m_Trait: {fileID: 11400000, guid: 9d24b90158d644873a4d488182380074, type: 2}
+      m_TraitFieldId: 101
+      m_Enum: {fileID: 0}
+      m_Value: 
+  m_CreatedObjects: []
+  m_RemovedObjects: []
+  m_ObjectModifiers: []
+  m_Reward: 0
+  m_CustomRewards:
+  - m_Operator: +=
+    m_Typename: Unity.AI.Planner.Navigation.LocationDistance,Unity.AI.Planner
+    m_Parameters:
+    - Agent
+    - To

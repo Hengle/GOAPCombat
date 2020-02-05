@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba34515fc82b64f37966f612cca1f4c9, type: 3}
+  m_Name: AgentPlan
+  m_EditorClassIdentifier: 
+  m_ActionDefinitions:
+  - {fileID: 11400000, guid: af7f23f7d01824e42b2333ae11b60860, type: 2}
+  - {fileID: 11400000, guid: 87f2f517e8f1ec643b2c6606c256bc5a, type: 2}
+  m_StateTerminationDefinitions: []
+  m_CustomHeuristic: 
+  m_DefaultHeuristicLower: -100
+  m_DefaultHeuristicAverage: 0
+  m_DefaultHeuristicUpper: 100
+  DiscountFactor: 0.95
